@@ -1,18 +1,13 @@
 #!/usr/bin/node
+// A script that reads and prints the content of a file
+
+const file = process.argv[2];
 const fs = require('fs');
 
-process.argv[0] = 'node';
-function readFile (filePath) {
-  fs.readFile(filePath, 'utf8', (err, data) => {
-    if (err) {
-      console.error(err);
-      return;
-    }
+fs.readFile(file, 'utf8', (error, data) => {
+  if (error) {
+    console.log(error);
+  } else {
     console.log(data);
-  });
-}
-
-if (process.argv.length === 3) {
-  const filePath = process.argv[2];
-  readFile(filePath);
-}
+  }
+});
